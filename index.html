@@ -13,6 +13,7 @@
         .search-input { background: rgba(30, 30, 30, 0.7); border: 1px solid #a855f7; color: white; transition: 0.3s; }
         .search-input:focus { border-color: #ec4899; outline: none; box-shadow: 0 0 15px rgba(168, 85, 247, 0.4); }
         .logo-img { height: 45px; width: 45px; border-radius: 50%; border: 2px solid #a855f7; object-fit: cover; }
+        .disclaimer-box { background: rgba(168, 85, 247, 0.05); border: 1px dashed rgba(168, 85, 247, 0.4); }
     </style>
 </head>
 <body>
@@ -27,7 +28,6 @@
 
     <header class="py-12 px-6 text-center">
         <h2 class="text-4xl font-extrabold mb-6">Find Your <span class="gradient-text">OTP Number</span></h2>
-        
         <div class="max-w-md mx-auto relative">
             <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-purple-400"></i>
             <input type="text" id="countrySearch" onkeyup="filterNumbers()" placeholder="Search Country Name..." 
@@ -37,20 +37,18 @@
 
     <section class="max-w-6xl mx-auto px-6 py-4">
         <h3 class="text-xl font-bold mb-6 text-green-400 border-l-4 border-green-400 pl-3">⚡ CHEAP NUMBERS (Rs. 500)</h3>
-        <div id="cheapGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            </div>
+        <div id="cheapGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
     </section>
 
     <section class="max-w-6xl mx-auto px-6 py-12">
         <h3 class="text-xl font-bold mb-6 text-purple-400 border-l-4 border-purple-400 pl-3">👑 PREMIUM NUMBERS</h3>
-        <div id="premiumGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            </div>
+        <div id="premiumGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
     </section>
 
     <section class="max-w-4xl mx-auto px-6 py-10 mb-20">
         <div class="glass-card rounded-3xl p-8 border border-purple-500/20">
             <h3 class="text-2xl font-bold text-center mb-8 gradient-text">Payment Methods</h3>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
                 <div class="bg-black/50 p-4 rounded-xl text-center border border-gray-800">
                     <p class="text-orange-500 font-bold italic">JazzCash</p>
                     <p class="font-mono">03341557415</p>
@@ -67,7 +65,24 @@
                     <p class="text-[10px] text-gray-400">Shahbaz Ali</p>
                 </div>
             </div>
-            <p class="text-center mt-6 text-sm text-gray-400">✓ Anti-Ban & Logout Guarantee!</p>
+
+            <div class="disclaimer-box p-6 rounded-2xl">
+                <h4 class="text-red-500 font-bold mb-3 flex items-center gap-2">
+                    <i class="fas fa-exclamation-triangle"></i> IMPORTANT NOTICE:
+                </h4>
+                <p class="text-gray-300 text-sm leading-relaxed">
+                    Payment karne ke baad apna <span class="text-white font-bold text-lg">Screenshot (SS)</span> is WhatsApp number par lazmi bhejein: 
+                    <br>
+                    <a href="https://wa.me/923159160439" class="text-purple-400 font-bold text-xl hover:underline">03159160439</a>
+                    <br><br>
+                    Jab tak aap payment ka proof nahi bhejenge, aapka order process nahi kiya jayega. Proof milne ke 2-5 minutes ke andar aapka number active kar diya jayega.
+                </p>
+                <div class="mt-4 flex gap-4 text-[11px] text-gray-500 font-bold uppercase">
+                    <span>✓ Anti-Ban</span>
+                    <span>✓ Logout Guarantee</span>
+                    <span>✓ 24/7 Support</span>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -101,7 +116,7 @@
                     </div>
                     <h4 class="text-xl font-bold mb-1">${item.name}</h4>
                     <p class="text-gray-400 text-sm mb-4 font-medium">Rate: <span class="text-white">Rs. ${item.price}</span></p>
-                    <a href="https://wa.me/923159160439?text=Hi, mujhe ${item.name} (${item.code}) ka OTP chahiye." 
+                    <a href="https://wa.me/923159160439?text=Hi Hasu, mujhe ${item.name} (${item.code}) ka OTP chahiye." 
                        class="block text-center bg-purple-600 hover:bg-purple-500 py-3 rounded-2xl font-bold transition-all">
                        Buy Now
                     </a>
@@ -122,4 +137,3 @@
     </script>
 </body>
 </html>
-
