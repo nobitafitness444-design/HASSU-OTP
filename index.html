@@ -1,1 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HASU OFFICIAL STORE - OTP Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { background-color: #050505; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: white; }
+        .glass-card { background: rgba(20, 20, 20, 0.8); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .gradient-text { background: linear-gradient(90deg, #a855f7, #ec4899); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .search-input { background: rgba(30, 30, 30, 0.7); border: 1px solid #a855f7; color: white; transition: 0.3s; }
+        .search-input:focus { border-color: #ec4899; outline: none; box-shadow: 0 0 15px rgba(168, 85, 247, 0.4); }
+        .logo-img { height: 45px; width: 45px; border-radius: 50%; border: 2px solid #a855f7; object-fit: cover; }
+    </style>
+</head>
+<body>
+
+    <nav class="p-4 border-b border-gray-800 flex justify-between items-center bg-black sticky top-0 z-50">
+        <div class="flex items-center gap-3">
+            <img src="logo.png.jpg" alt="Logo" class="logo-img">
+            <h1 class="text-2xl font-bold uppercase tracking-tighter">Hasu <span class="text-purple-500">Official</span></h1>
+        </div>
+        <a href="https://wa.me/923159160439" class="bg-green-600 px-5 py-2 rounded-full text-sm font-bold hover:bg-green-700 transition">Contact WhatsApp</a>
+    </nav>
+
+    <header class="py-12 px-6 text-center">
+        <h2 class="text-4xl font-extrabold mb-6">Find Your <span class="gradient-text">OTP Number</span></h2>
+        
+        <div class="max-w-md mx-auto relative">
+            <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-purple-400"></i>
+            <input type="text" id="countrySearch" onkeyup="filterNumbers()" placeholder="Search Country Name..." 
+                   class="search-input w-full pl-12 pr-4 py-3 rounded-2xl text-lg">
+        </div>
+    </header>
+
+    <section class="max-w-6xl mx-auto px-6 py-4">
+        <h3 class="text-xl font-bold mb-6 text-green-400 border-l-4 border-green-400 pl-3">⚡ CHEAP NUMBERS (Rs. 500)</h3>
+        <div id="cheapGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-6 py-12">
+        <h3 class="text-xl font-bold mb-6 text-purple-400 border-l-4 border-purple-400 pl-3">👑 PREMIUM NUMBERS</h3>
+        <div id="premiumGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            </div>
+    </section>
+
+    <section class="max-w-4xl mx-auto px-6 py-10 mb-20">
+        <div class="glass-card rounded-3xl p-8 border border-purple-500/20">
+            <h3 class="text-2xl font-bold text-center mb-8 gradient-text">Payment Methods</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-black/50 p-4 rounded-xl text-center border border-gray-800">
+                    <p class="text-orange-500 font-bold italic">JazzCash</p>
+                    <p class="font-mono">03341557415</p>
+                    <p class="text-[10px] text-gray-400">Shahbaz Ali</p>
+                </div>
+                <div class="bg-black/50 p-4 rounded-xl text-center border border-gray-800">
+                    <p class="text-blue-400 font-bold italic">Zindigi</p>
+                    <p class="font-mono">03341557415</p>
+                    <p class="text-[10px] text-gray-400">Sadaqat Ali</p>
+                </div>
+                <div class="bg-black/50 p-4 rounded-xl text-center border border-gray-800">
+                    <p class="text-green-500 font-bold italic">EasyPaisa</p>
+                    <p class="font-mono">03372800072</p>
+                    <p class="text-[10px] text-gray-400">Shahbaz Ali</p>
+                </div>
+            </div>
+            <p class="text-center mt-6 text-sm text-gray-400">✓ Anti-Ban & Logout Guarantee!</p>
+        </div>
+    </section>
+
+    <script>
+        const cheapData = [
+            { name: 'Argentina', price: 500, flag: 'ar', code: '+54' },
+            { name: 'Armenia', price: 500, flag: 'am', code: '+374' },
+            { name: 'Bangladesh', price: 500, flag: 'bd', code: '+880' },
+            { name: 'Bermuda', price: 500, flag: 'bm', code: '+1' },
+            { name: 'UAE', price: 500, flag: 'ae', code: '+971' },
+            { name: 'United Kingdom', price: 500, flag: 'gb', code: '+44' },
+            { name: 'Canada', price: 500, flag: 'ca', code: '+1' },
+            { name: 'Pakistan', price: 500, flag: 'pk', code: '+92' }
+        ];
+
+        const premiumData = [
+            { name: 'United States', price: 1000, flag: 'us', code: '+1' },
+            { name: 'Egypt', price: 600, flag: 'eg', code: '+20' },
+            { name: 'France', price: 1500, flag: 'fr', code: '+33' },
+            { name: 'Germany', price: 700, flag: 'de', code: '+49' },
+            { name: 'Australia', price: 1800, flag: 'au', code: '+61' }
+        ];
+
+        function renderCards(data, elementId) {
+            const grid = document.getElementById(elementId);
+            grid.innerHTML = data.map(item => `
+                <div class="country-card glass-card p-6 rounded-3xl hover:border-purple-500 transition-all duration-300" data-name="${item.name.toLowerCase()}">
+                    <div class="flex justify-between items-center mb-4">
+                        <img src="https://flagcdn.com/w80/${item.flag}.png" class="w-12 border border-gray-800 rounded">
+                        <span class="text-[10px] font-bold bg-green-500/10 text-green-500 px-2 py-1 rounded">STABLE</span>
+                    </div>
+                    <h4 class="text-xl font-bold mb-1">${item.name}</h4>
+                    <p class="text-gray-400 text-sm mb-4 font-medium">Rate: <span class="text-white">Rs. ${item.price}</span></p>
+                    <a href="https://wa.me/923159160439?text=Hi, mujhe ${item.name} (${item.code}) ka OTP chahiye." 
+                       class="block text-center bg-purple-600 hover:bg-purple-500 py-3 rounded-2xl font-bold transition-all">
+                       Buy Now
+                    </a>
+                </div>
+            `).join('');
+        }
+
+        renderCards(cheapData, 'cheapGrid');
+        renderCards(premiumData, 'premiumGrid');
+
+        function filterNumbers() {
+            const term = document.getElementById('countrySearch').value.toLowerCase();
+            const cards = document.getElementsByClassName('country-card');
+            for (let card of cards) {
+                card.style.display = card.getAttribute('data-name').includes(term) ? "block" : "none";
+            }
+        }
+    </script>
+</body>
+</html>
 
